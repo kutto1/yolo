@@ -19,8 +19,13 @@ services:
       MONGODB_URI: mongodb://mongo_db:27017
       DB_NAME: yolomy
       NAME: YoloShop
-    depends_on: 
+      depends_on: 
       - mongo_db
+      
+  backend:
+    volumes:
+      - ./:/app/project
+    
 
 volumes: 
   mongo_db: {}
