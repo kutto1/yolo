@@ -11,6 +11,8 @@ services:
 
       #Node API service
   api: 
+    volumes:
+      - ./:/app/project
     build: .
     ports: 
       - 5000:3000
@@ -21,7 +23,7 @@ services:
       NAME: YoloShop
       depends_on: 
       - mongo_db
-      
+
   backend:
     volumes:
       - ./:/app/project
