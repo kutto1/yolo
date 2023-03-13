@@ -23,11 +23,6 @@ services:
       NAME: YoloShop
     depends_on: 
       - mongo_db
-
-  #backend:
-   # volumes:
-    #  - ./:/app/project
-    
-
+  
 volumes: 
   mongo_db: {}
