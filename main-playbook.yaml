@@ -1,0 +1,19 @@
+---
+- hosts: all
+  
+  become: yes
+  tasks:
+
+  # Install Docker
+  
+  - name: install prerequisites
+    apt:
+      name:
+        - docker.io
+      update_cache: yes
+
+  - name: add user permissions
+    shell: "usermod -aG docker vagrant1"
+
+  - name: Reset ssh connection for changes to take effect
+    meta: "reset_connection"
