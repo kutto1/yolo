@@ -1,8 +1,8 @@
 ---
 # tasks file for install-app
 
--name: Create Network
- community.docker.docker_network:
+- name: Create Network
+  community.docker.docker_network:
    name: yolo_net
 
 - name: MongoDB Service
@@ -31,7 +31,5 @@
       NAME: YoloShop
     depends_on: 
       - mongo_db
-    
-  
-volumes: 
-  mongo_db: {}
+
+      
