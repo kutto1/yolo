@@ -26,7 +26,7 @@ Vagrant.configure("2") do |config|
     web.vm.provision "ansible" do |ansible|
 
     #Path mentioned
-    ansible.playbook="main.yaml"
+    ansible.playbook="main-playbook.yaml"
 
     end
 end
