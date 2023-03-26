@@ -1,0 +1,37 @@
+---
+# tasks file for install-app
+
+-name: Create Network
+ community.docker.docker_network:
+   name: yolo_net
+
+- name: MongoDB Service
+  community.docker.docker_container:
+    name: db_container
+    image: mongo:latest
+    restart: always
+    volumes: 
+      - mongo_db:/data/db
+
+      
+- name: Node API service
+  community.docker.docker_container:
+    name: yolo_app
+    volumes:
+      - ./:/app/project
+    build: .
+    ports: 
+      - 5000:3000
+    networks: 
+      - name:  yolo_net
+    environment:
+      PORT: 3000
+      MONGODB_URI: mongodb://mongo_db:27017
+      DB_NAME: yolomy
+      NAME: YoloShop
+    depends_on: 
+      - mongo_db
+    
+  
+volumes: 
+  mongo_db: {}
