@@ -40,9 +40,9 @@ The approach used was to set up the ansible environment by creating the followin
 * ansible.cfg - ansible file configurations are defined here 
 * The main playbook file `main-playbook.yaml` which contains 3 roles defined:
 
- 1. install-docker role: this handle the tasks to install docker and it's dependencies as well as docker SDK.
- 2. install-app role: this handles the tasks of containerization of all components into microservices.
- 3. watchtower-role: this deploys watchtower which is a service that automatically updates all running containers in the service
+    1. install-docker role: this handle the tasks to install docker and it's dependencies as well as docker SDK.
+    2. install-app role: this handles the tasks of containerization of all components into microservices.
+    3. watchtower-role: this deploys watchtower which is a service that automatically updates all running containers in the service
 
  Volumes have been used within the roles creation to ensure persistence of the instances
 
