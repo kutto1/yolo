@@ -31,9 +31,41 @@ Make sure that you have the following installed:
       then
     
      `sudo docker compose up`
-  
-# Network
-  Bridge network named YOLO_NET created
-  use the following command to run it
-   
-   `docker run -d --net=YOLO_NET`
+
+# IP3 Configuration Management - Ansible Instrumentation
+
+The approach used was to set up the ansible environment by creating the following; 
+
+* inventory - contains virtual server IP address which the project is to be implemented on- this is how we can connect to the vagrant server using ansible
+* ansible.cfg - ansible file configurations are defined here 
+* The main playbook file `main-playbook.yaml` which contains 3 roles defined:
+
+ 1. install-docker role: this handle the tasks to install docker and it's dependencies as well as docker SDK.
+ 2. install-app role: this handles the tasks of containerization of all components into microservices.
+ 3. watchtower-role: this deploys watchtower which is a service that automatically updates all running containers in the service
+
+ Volumes have been used within the roles creation to ensure persistence of the instances
+
+ Vagrantfile was created to be used in setting up the desired remote environment/server/VM with guidelines on each instructions.
+
+
+   ## Installations
+
+  Run the following command to install ansible
+  `python3 -m pip install ansible`
+
+  Run the following command to install docker galaxy which enables management of docker with ansible
+  `ansible-galaxy collection install community.docker`
+
+  Run the following command to install ansible
+  `python3 -m pip install ansible`
+
+  Run the following command to run vagrant and start the VM
+  `vagrant up`
+
+  To run the ansible playbook execute following command in the shell 
+  `ansible-playbook main-playbook.yaml`
+
+
+
+
