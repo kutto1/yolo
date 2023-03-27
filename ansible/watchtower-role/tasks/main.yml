@@ -1,0 +1,11 @@
+---
+# tasks file for watchtower-role
+
+- name: Deploy Watchtower
+  community.docker.docker_container:
+    name: watchtower
+    image: containrrr/watchtower
+    command: --schedule "at(2021-07-07T13:15:30)"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    restart_policy: always
