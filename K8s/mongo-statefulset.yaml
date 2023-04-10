@@ -22,3 +22,13 @@ spec:
             - name: pvc
               mountPath: /data/db
             
+# volumeClaimTemplates for persistent volume for each replica pod
+  volumeClaimTemplates:
+    - metadata:
+        name: pvc
+      spec:
+        accessModes: 
+          - "ReadWriteOnce"
+        resources:
+          requests:
+            storage: 1Gi
