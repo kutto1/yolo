@@ -16,7 +16,7 @@ spec:
         - name: nodeserver
           image: kutto1/yolo:0.0.2.RELEASE
           ports:
-            - containerPort: 3000
+            - containerPort: 27017
           imagePullPolicy: IfNotPresent
         
           
