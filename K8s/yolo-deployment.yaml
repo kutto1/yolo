@@ -17,3 +17,6 @@ spec:
           image: kutto1/yolo:0.0.2.RELEASE
           ports:
             - containerPort: 3000
+          imagePullPolicy: IfNotPresent
+        
+          
