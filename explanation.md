@@ -81,18 +81,20 @@ I used the following manifest and services to deploy the appliaction in the k8s 
       - Replicas defined to increase availability 
       - Image pull policy defined to `IfNotPresent` so that the image is pulled from Docker hub only once then from there only when not available.
 
-    * This is linked by it's name/label to the `Nodeport-svc.yaml` file which creates a Nodeport service that is used to expose the app to the internet 
+     This is linked by it's name/label to the `Nodeport-svc.yaml` file which creates a Nodeport service that is used to expose the app to the internet 
       
 
   2. Statefulset K8s object was used for database storage for data consistency - the `mongo-statefulset.yaml` manifest file is used to create the image of the mongodb and set up replicas to increase avaialbily.
-  Reasons: 
-      - Pods are created one by one in order for the data to synchronize from the master to the slave nodes
-      - volumeClaimTemplates for persistent volume for each replica pod seperately to avoid data inconsistency
-      - Use of the sticky identity assigned to each pod that is created for a consistent and predicatable identity to keep track easier
+  
+      Reasons: 
+       - Pods are created one by one in order for the data to synchronize from the master to the slave nodes
+       - volumeClaimTemplates for persistent volume for each replica pod seperately to avoid data inconsistency
+       - Use of the sticky identity assigned to each pod that is created for a consistent and predicatable identity to keep track easier
         even on delete or restart
-      - Scaling is easier considering it is a online shopping app so traffic on the app might increase or decrease.
+       - Scaling is easier considering it is a online shopping app so traffic on the app might increase or decrease.
 
-    * A headless service is created for this in order to enable talking to a specific node intead of balancing loads across all the nodes
+      
+      A headless service is created for this in order to enable talking to a specific node intead of balancing loads across all the nodes
        - each pod gets it's specific DNS entries
 
 
