@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yoloapp
+spec:
+  selector:
+    matchLabels:
+      app: yoloapp
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: yoloapp
+    spec:
+      containers:
+        - name: nodeserver
+          image: kutto1/yolo:0.0.2.RELEASE
+          ports:
+            - containerPort: 3000
